@@ -1,11 +1,21 @@
 {
   "compilerOptions": {
+	"experimentalDecorators": true,
+	"suppressImplicitAnyIndexErrors": true,
+	"noUnusedLocals": false,
+	"noImplicitAny": false,
+	"allowUnusedLabels": false,
+	"noUnusedParameters": false,
     "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
-    ],
+	],
+	"typeRoots": [
+		"node_modules/@types",
+		"src/@types"
+	],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -17,7 +27,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+	"baseUrl": "src"
   },
   "include": [
     "src"

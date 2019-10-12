@@ -1,0 +1,15 @@
+.monitor-page-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	div {
+		flex: 1;
+		&:not(:last-child) {
+			margin-right: 20px;
+		}
+	}
+}
+.monitor-page-table {
+	background-color: #fff;
+	margin: 20px 0px;
+}

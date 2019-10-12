@@ -1,21 +1,20 @@
-import React, { useEffect } from 'react';
-import './App.css';
-import { Button } from 'antd'
-import { startLogin } from './api/login'
-import { getSubMenu } from './api'
+import React from 'react';
+import AuthPage from './pages/Auth'
+import { Provider } from 'mobx-react'
+import { Router, Route } from 'react-router-dom'
+import History from './utils/history'
+import Login from 'pages/Login'
+import * as Stores from 'models'
+import 'assets/style/reset.scss'
+
 const App: React.FC = () => {
-	useEffect(() => {
-		startLogin({}).then(res=> {
-			console.log(res)
-		})
-		getSubMenu().then(res => {
-			console.log(res)
-		})
-	})
 	return (
-		<div className="App">
-			<Button>hha</Button>
-		</div>
+		<Provider {...Stores}>
+			<Router history={History}>
+				<Route path="/login" component={Login} />
+				<AuthPage />
+			</Router>
+		</Provider>
 	);
 }
 

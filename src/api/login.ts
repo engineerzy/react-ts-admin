@@ -1,9 +1,12 @@
 import request from '../service/request'
 
-export const startLogin = (options: object) => {
+export const startLogin = ({username, password}) => {
 	return request('http://localhost:4000/login', {
-		body: JSON.stringify(options),
-		method: 'GET',
+		body: {
+			username,
+			password
+		},
+		method: 'POST',
 		mode: 'cors'
 	})
 }

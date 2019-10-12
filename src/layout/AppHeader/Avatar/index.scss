@@ -1,0 +1,14 @@
+.layout-header-avatar {
+	height: 100%;
+	padding: 0px 8px;
+	display: flex;
+	justify-content: flex;
+	justify-content: space-between;
+	align-items: center;
+	.avatar-img {
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		margin-right: 8px;
+	}
+}

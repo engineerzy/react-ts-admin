@@ -1,0 +1,16 @@
+.sliderbar-section {
+	width: 256px;
+	height: 100%;
+	box-shadow: 2px 0 6px rgba(0,21,41,.35);
+	// float: left;
+
+	.sliderbar-logo {
+		width: 100%;
+		background-color: #041527;
+		text-align: center;
+		line-height: 64px;
+		img {
+			width: 60%;
+		}
+	}
+}

@@ -1,0 +1,72 @@
+html, body {
+	height: 100%;
+}
+
+body {
+	font-size: 14px;
+	color: #333333;
+	font-family: Tahoma, Helvetica, Arial;
+}
+
+#root {
+	width: 100%;
+	height: 100%;
+}
+
+div,
+span,
+ul,
+ol,
+li,
+dl,
+dd,
+dt,
+fieldset,
+legend,
+section,
+button,
+form,
+input,
+img,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+footer,
+header,
+a,
+link,
+i,
+textarea,
+table,
+thead,
+tbody {
+	margin: 0px;
+	padding: 0px;
+}
+
+input {
+	outline: none;
+	border: none;
+}
+
+a {
+	text-decoration: none;
+	font-family: normal;
+	color: #333333;
+}
+img {
+	vertical-align: middle;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+button {
+	outline: none;
+}

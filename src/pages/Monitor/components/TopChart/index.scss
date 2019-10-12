@@ -1,0 +1,28 @@
+.top-chart-item {
+	height: 100%;
+	padding: 20px 24px 8px;
+	box-sizing: border-box;
+	background-color: #fff;
+	border-radius: 4px;
+	box-shadow: 0px 0px 4px rgba(0,21,41,.2);
+	color: rgba(0, 0, 0, 0.65);
+	.top-chart-title {
+		color: rgba(0,0,0,.45);
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.top-chart-extra {
+		height: 46px;
+		// overflow: hidden;
+		display: flex;
+		align-items: center;
+	}
+	.top-chart-amount {
+		font: 30px/38px normal;
+		color: rgba(0,0,0,.85);
+	}
+	.top-chart-foot {
+		padding-top: 8px;
+	}
+}

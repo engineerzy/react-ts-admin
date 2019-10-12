@@ -1,6 +1,9 @@
-import React from 'react'
-import { observable, reaction, computed, action } from 'mobx'
+import { observable } from 'mobx'
 
-export default class {
-	
+class Chart {
+	@observable state = {
+		cc: 'hello world'
+	}
 }
+
+export default new Chart()

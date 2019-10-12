@@ -9,7 +9,12 @@ interface IRequestOptions {
 	referrer?: 'no-referrer' | 'client',
 	headers?: any,
 }
-export type IResponse = Response | {}
+export interface IResponse {
+	data: any,
+	msg: string,
+	status: number,
+	[propName: string]: any,
+}
 
 export interface IRequest {
 	(url: string, options: IRequestOptions): Promise<IResponse>
@@ -17,3 +22,4 @@ export interface IRequest {
 export interface ICreateOpts {
 	(props: IRequestOptions): IRequestOptions
 }
+
