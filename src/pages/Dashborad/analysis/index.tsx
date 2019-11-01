@@ -1,6 +1,6 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom'
-const AdminContext = React.createContext({name: '张三', age: 18})
+// const AdminContext = React.createContext({name: '张三', age: 18})
 
 interface ExampleProps {
 	user: {
@@ -21,7 +21,7 @@ const Example = React.memo(function (props: ExampleProps) {
 })
 
 
-const Admin: React.FC = props => {
+const Admin: React.FC = () => {
 	const [user, setUser] = useState({name: '李四', age: 18})
 	function handleClick() {
 		setUser({

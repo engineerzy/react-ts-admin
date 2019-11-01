@@ -326,7 +326,9 @@ module.exports = function (webpackEnv) {
 						{
 							loader: 'sass-resources-loader',
 							options: {
-								resources: ['./src/assets/style/var.scss']
+								resources: [
+									path.resolve(__dirname, '../src/assets/style/variable.scss')
+								]
 							}
 						}
 					]
@@ -471,7 +473,7 @@ module.exports = function (webpackEnv) {
 								{
 									loader: "sass-resources-loader",
 									options: {
-										resources: path.join(__dirname, "../src/assets/scss/index.scss")
+										resources: ['src/assets/style/variable.scss']
 									}
 								}
 						   ]),
@@ -497,7 +499,9 @@ module.exports = function (webpackEnv) {
 								{
 									loader: "sass-resources-loader",
 									options: {
-										resources: path.join(__dirname, "../src/assets/scss/index.scss")
+										resources: [
+											path.resolve(__dirname, '../src/assets/style/variable.scss')
+										]
 									}
 								}
 						   ])

@@ -1,26 +1,26 @@
 {
   "compilerOptions": {
-	"experimentalDecorators": true,
-	"suppressImplicitAnyIndexErrors": true,
-	"noUnusedLocals": false,
-	"noImplicitAny": false,
-	"allowUnusedLabels": false,
-	"noUnusedParameters": false,
+    "experimentalDecorators": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": false,
+    "noImplicitAny": false,
+    "allowUnusedLabels": false,
+    "noUnusedParameters": false,
     "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
-	],
-	"typeRoots": [
-		"node_modules/@types",
-		"src/@types"
-	],
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "src/@types"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -28,7 +28,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-	"baseUrl": "src"
+    "baseUrl": "src"
   },
   "include": [
     "src"

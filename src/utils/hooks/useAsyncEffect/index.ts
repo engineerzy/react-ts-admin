@@ -1,32 +1,28 @@
-import { useEffect, useState, useCallback, useRef } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState, useCallback, useRef,DependencyList } from 'react'
 
 export interface StateType<T> {
 	loading: boolean,
 	data?: T,
 	error?: Error,
-	run?: () => Promise<T | undefined>
 }
 
 export default function useAsyncEffect<Result = any>(
 	effect: (...args: any[]) => Promise<Result>,
-	input: ReadonlyArray<any>
+	input: DependencyList = [],
+	initState: StateType<Result> = {loading: false}
 ) {
-	const [state, setState] = useState<StateType<Result>>({
-		loading: false,
-		run: async () => null as any
-	})
-	const loading = useRef(false)
-
+	
+	const [state, setState] = useState<StateType<Result>>(initState)
+	
 	const run = useCallback((...args: any[]): Promise<any | undefined> => {
-		loading.current = true
+		
 		return effect(...args)
 			.then(data => {
-				loading.current = false
 				setState(s => ({ ...s, data, loading: false }))
 				return data
 			})
 			.catch(error => {
-				loading.current = false
 				setState(s => ({ ...s, error, loading: false }))
 				return error
 			})
@@ -37,7 +33,6 @@ export default function useAsyncEffect<Result = any>(
 	}, input)
 
 	return {
-		loading: loading.current,
 		data: state.data ? state.data : {},
 		run,
 	}

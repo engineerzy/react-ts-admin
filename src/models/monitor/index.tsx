@@ -1,13 +1,13 @@
 
 import React from 'react'
-import { MonitorInterface } from 'models/types'
+import { IMonitor } from 'models/types'
 import { Button } from 'antd'
 import Chart from 'utils/chart'
 import { observable, action, configure, runInAction, toJS } from 'mobx'
 import * as api from 'api'
 configure({ enforceActions: 'observed' })
 
-class Monitor implements MonitorInterface {
+class Monitor implements IMonitor.MonitorInterface {
 	@observable topChartState = {
 		salesVolume: {
 			totalAmount: 0,

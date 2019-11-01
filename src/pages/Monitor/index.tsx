@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { inject, observer } from 'mobx-react'
 import { toJS } from 'mobx'
-import TopChart from './components/TopChart'
+import TopChart from 'components/TopChart'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
-import { MonitorInterface } from 'models/types'
+import { IMonitor } from 'models/types'
 import { Table } from 'antd'
 import './index.scss'
 
@@ -16,7 +16,7 @@ function useAsync (fn, devs: any[]) {
 }
 
 interface MonitorProps extends RouteComponentProps {
-	Monitor: MonitorInterface
+	Monitor: IMonitor.MonitorInterface
 }
 
 const Monitor: React.FC<MonitorProps> = inject('Monitor')(observer(props => {
@@ -38,7 +38,7 @@ const Monitor: React.FC<MonitorProps> = inject('Monitor')(observer(props => {
 				<TopChart
 					title="访问量"
 					amount={salesVolume.currentAmount}
-					footInfo="日访问量: 65"
+					footInfo="访问量: 65"
 					tipText="随便写点啥吧">
 					<div id="top1"></div>
 				</TopChart>

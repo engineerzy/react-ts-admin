@@ -101,7 +101,7 @@ export default function useAsync<Result = any>(
     return () => {
       count.current += 1;
     };
-  }, deps as DependencyList);
+  }, deps);
 
   const run = useCallback((...args: any[]): Promise<Result | undefined> => {
     // 确保不会返回被取消的结果
@@ -158,7 +158,7 @@ export default function useAsync<Result = any>(
       }
       return undefined;
     },
-    [run],
+    [],
   );
 
   const start = useCallback(
@@ -167,7 +167,7 @@ export default function useAsync<Result = any>(
       await run(...(args || []));
       return resume(...(args || []));
     },
-    [run],
+    [run, resume],
   );
 
   const intervalAsync = useCallback(
@@ -211,7 +211,7 @@ export default function useAsync<Result = any>(
       // 直接运行
       return run(...(args || []));
     },
-    [run, options.pollingInterval],
+    [run, options.pollingInterval, intervalAsync, stop, options.manual],
   );
 
   const cancel = useCallback(() => {
@@ -234,7 +234,7 @@ export default function useAsync<Result = any>(
         stop();
       };
     },
-    [options.manual, options.pollingInterval, run, intervalAsync],
+    [options.manual, options.pollingInterval, run, intervalAsync, stop],
   );
 
   return {

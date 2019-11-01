@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react'
+import React, { useState, useCallback, useMemo } from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { Icon } from 'antd'
 import Avatar from './Avatar'
@@ -27,13 +27,11 @@ const Header: React.FC<IProps> = props => {
 				<Icon type={leftBtnIcon} />
 			</div>
 			<div>
-				{
-					useCallback(() => <Avatar
-						username={nickname}
-						avatarUrl={avatar}
-						onLogout={handleLogout}
-					/>, [nickname, avatar])()
-				}
+				<Avatar
+					username={nickname}
+					avatarUrl={avatar}
+					onLogout={useCallback(handleLogout, [])}
+				/>
 			</div>
 		</section>
 	)

@@ -7,8 +7,16 @@
 		height: 100%;
 		background-color: #f0f2f5;
 		flex: 1;
+		display: flex;
+		flex-direction: column;
+		
 		.layout-main {
 			margin: 20px;
+			height: 100%;
+			flex: 1;
+			>div {
+				height: 100%;
+			}
 		}
 	}
 }

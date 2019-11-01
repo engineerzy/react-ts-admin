@@ -17,9 +17,9 @@ const defaultOptions = {
 	cache: 'no-cache',
 	redirect: 'follow',
 	referrer: 'no-referrer',
-	credentials: 'same-origin',
+	credentials: 'include',
 	headers: {
-		'content-type': 'application/json'
+		'content-type': 'application/json',
 	}
 }
 const createRequestOptions: ICreateOpts = (opts: IRequestOptions) => {
@@ -39,9 +39,7 @@ const createRequestOptions: ICreateOpts = (opts: IRequestOptions) => {
 
 const request: IRequest = async (url: string, options: IRequestOptions): Promise<IResponse>=> {
 	const newOptions = createRequestOptions(options)
-	if(url.indexOf('http://') === -1) {
-		url = `http://localhost:4000/${url}`
-	}
+	url = `${window.location.origin}/api/${url}`
 	const response = await window.fetch(url, newOptions)
 	const result = await response.json()
 	if(!response.ok) {

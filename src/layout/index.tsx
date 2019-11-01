@@ -1,32 +1,54 @@
 import React, { useState, useMemo, useRef } from 'react'
-import { useAsyncEffect } from 'utils/hooks'
-import routes from 'routes'
+import { useAsyncEffect, } from 'utils/hooks'
+import { IUser } from 'models/types'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import LayoutHeader from './AppHeader'
 import LayoutSliderBar from './AppSliderBar'
 import { LayoutStateTypes } from './types.interface'
+import { observer, inject } from 'mobx-react'
 import RouteView from 'components/RouteView'
+import routes from 'routes'
 import * as api from 'api'
 import './index.scss'
 
-const useLayout = () => {
+const useLayout = (User: IUser.IUser) => {
 	let count = useRef(0)
 	count.current++
-	const [state, setState] = useState<LayoutStateTypes>({ avatar: '', nickname: '', menus: [] })
-	const {loading} = useAsyncEffect(async () => {
-		const [menusInfo, userInfo] = await Promise.all([api.layout.getSubMenu(), api.user.getUserInfo()])
-		setState(s => ({
+	const [state, setState] = useState<LayoutStateTypes>({ 
+		avatar: '', 
+		nickname: '', 
+		menus: [] 
+	})
+
+	useAsyncEffect(async () => {
+		const [menusInfo, userInfo] = await Promise.all([
+			api.layout.getSubMenu(),
+			api.user.getUserInfo()
+		])
+
+		setState(() => ({
 			nickname: userInfo.data.nickname,
 			avatar: userInfo.data.avatar,
 			menus: menusInfo.data.menus
 		}))
 	}, [])
-	console.log(`第${count.current}次渲染`, loading)
-	return { menus: state.menus, user: { nickname: state.nickname, avatar: state.avatar } }
+
+	User.changeUserInfo({
+		nickname: state.nickname,
+		avatar: state.avatar
+	})
+
+	return {
+		menus: state.menus,
+		user: {
+			nickname: state.nickname,
+			avatar: state.avatar
+		}
+	}
 }
 
 
-const RouteContent: React.FC<{ pathname: string }> = ({ pathname }) => {
+const RouteContent: React.FC = () => {
 	return (
 		<section className="layout-main">
 			<RouteView routes={routes}></RouteView>
@@ -34,17 +56,11 @@ const RouteContent: React.FC<{ pathname: string }> = ({ pathname }) => {
 	)
 }
 
-const Layout: React.FC<RouteComponentProps> = (props) => {
-	const { menus, user } = useLayout()
-	function test(a: number) {
-		if(a == 5) {
-			// "plugins": [
-			// 	"react-hook"
-			// ],
-		// 	"no-unused-vars": ["off"],
-		// "exhaustive-deps": ["off"],
-		}
-	}
+interface ILayout extends RouteComponentProps {
+	User?: IUser.IUser
+}
+const Layout: React.FC<ILayout> = observer(props => {
+	const { menus, user } = useLayout(props.User)
 	return (
 		<div className="layout-page clearfix">
 			<LayoutSliderBar
@@ -55,17 +71,16 @@ const Layout: React.FC<RouteComponentProps> = (props) => {
 					avatar={user.avatar}
 					nickname={user.nickname}
 				/>
+
 				{
 					useMemo(() =>
-						<RouteContent
-							pathname={props.location.pathname}
-						/>,
-						[props.location.pathname]
+						<RouteContent />,
+						[]
 					)
 				}
 			</div>
 		</div>
 	)
-}
+})
 
-export default withRouter(Layout)
+export default withRouter<ILayout, React.FC<ILayout>>(inject('User')(Layout))

@@ -1,7 +1,7 @@
 import request from '../service/request'
 
 export const tokenTest = () => {
-	return request('http://localhost:4000/errorToken', {
+	return request('api/errorToken', {
 		method: 'GET',
 		mode: 'cors'
 	})

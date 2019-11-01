@@ -66,6 +66,7 @@ const SliderBar: React.FC<IProps> = (props) => {
 			activeMenu: [item.key]
 		})
 	}
+	// style={{ width: '256px', height: '%', float: 'left' }}
 
 	return (
 		<aside className="sliderbar-section">
@@ -76,7 +77,7 @@ const SliderBar: React.FC<IProps> = (props) => {
 				theme="dark"
 				openKeys={openConfig.openMenu}
 				selectedKeys={openConfig.activeMenu}
-				style={{ width: '256px', height: '100%', float: 'left' }}
+				className="sliderbar-list"
 				onOpenChange={openChangeHandle}
 				onSelect={selectChangeHandle}
 			>

@@ -10,4 +10,5 @@ interface AsyncReturnValue<T> {
 	error?: Error,
 	run?: <K>(...args: any[]) => Promise<K | undefined>
 }
+
 function useAsyncEffect <T = {}>(effect: EffectCallBack<T>, devs: DependencyList): AsyncReturnValue

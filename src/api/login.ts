@@ -1,7 +1,7 @@
 import request from '../service/request'
 
 export const startLogin = ({username, password}) => {
-	return request('http://localhost:4000/login', {
+	return request('login', {
 		body: {
 			username,
 			password
