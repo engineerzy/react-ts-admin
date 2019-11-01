@@ -44,6 +44,7 @@ const useSubmit = (form) => {
 		form.validateFields((err, values) => {
 			if(err) return;
 			// todo somethings
+			console.log(values)
 		})
 	}, [form])
 	return handleSubmit
